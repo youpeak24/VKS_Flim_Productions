@@ -3,6 +3,7 @@ import { Link, Route, Routes, useLocation } from 'react-router-dom'
 import { AnimatePresence, MotionConfig } from 'motion/react'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
+import FloatingSocialButtons from './components/layout/FloatingSocialButtons'
 import PageTransition from './components/layout/PageTransition'
 import ScrollToTop from './components/layout/ScrollToTop'
 import Seo from './components/common/Seo'
@@ -84,6 +85,7 @@ export default function App() {
         </AnimatePresence>
       </main>
       <Footer />
+      <FloatingSocialButtons />
     </MotionConfig>
   )
 }

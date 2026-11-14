@@ -8,7 +8,14 @@ import PaintArtwork from '../common/PaintArtwork'
 import GradientText from '../common/GradientText'
 import AnimatedHeading from '../common/AnimatedHeading'
 import WhatsAppIcon from '../common/WhatsAppIcon'
+import { InstagramIcon, YouTubeIcon, FacebookIcon } from '../common/SocialIcons'
 import { gsap, useGSAP, MOTION_OK } from '../../lib/gsap'
+
+const socialIconMap = {
+  Instagram: { icon: InstagramIcon, color: 'text-magenta' },
+  YouTube: { icon: YouTubeIcon, color: 'text-orange' },
+  Facebook: { icon: FacebookIcon, color: 'text-blue' },
+}
 
 const legal = siteConfig.routes.filter((r) => !r.nav)
 
@@ -118,14 +125,19 @@ export default function Footer() {
                   <span className="sr-only">(opens in a new tab)</span>
                 </a>
               </li>
-              {siteConfig.social.map((s) => (
-                <li key={s.url}>
-                  <a href={s.url} target="_blank" rel="noopener noreferrer" className={linkCls}>
-                    {s.label}
-                    <span className="sr-only">(opens in a new tab)</span>
-                  </a>
-                </li>
-              ))}
+              {siteConfig.social.map((s) => {
+                const conf = socialIconMap[s.label]
+                const Icon = conf?.icon
+                return (
+                  <li key={s.url}>
+                    <a href={s.url} target="_blank" rel="noopener noreferrer" className={`${linkCls} gap-3`}>
+                      {Icon && <Icon className={`size-4 ${conf.color}`} />}
+                      {s.label}
+                      <span className="sr-only">(opens in a new tab)</span>
+                    </a>
+                  </li>
+                )
+              })}
             </ul>
           </div>
 

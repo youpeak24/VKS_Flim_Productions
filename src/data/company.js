@@ -27,12 +27,14 @@ export const company = {
   },
 
   /**
-   * Social profiles. Supplied handle: "@VKSFilm Production" — the platform and profile URL have NOT
-   * been confirmed yet, so nothing is rendered. Add confirmed entries like:
-   *   { label: 'Instagram', url: 'https://www.instagram.com/…', handle: '@…' }
-   * They are shown in the UI and emitted as JSON-LD sameAs automatically.
+   * Social profiles. Configured with confirmed profile URLs for VKS Film Production.
+   * They are shown in the UI, floating buttons, and emitted as JSON-LD sameAs automatically.
    */
-  social: [],
+  social: [
+    { label: 'Instagram', url: 'https://www.instagram.com/vksflimproductions/', handle: '@vksflimproductions' },
+    { label: 'YouTube', url: 'https://www.youtube.com/@vksflims', handle: '@vksflims' },
+    { label: 'Facebook', url: 'https://www.facebook.com/profile.php?id=61595996317304', handle: 'VKS Film Production' },
+  ],
 
   assets: {
     /** 1200×630 social sharing image (public/og-image.jpg). */
