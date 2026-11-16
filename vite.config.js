@@ -4,8 +4,9 @@ import tailwindcss from '@tailwindcss/vite'
 import { seoPlugin } from './scripts/vite-seo-plugin.js'
 
 /**
- * Serves api/contact.js during `npm run dev`, so the contact form works locally without
- * `vercel dev`. In production Vercel runs the same file as a serverless function.
+ * Serves api/contact.js and api/chat.js during `npm run dev`, so the contact form and the AI chat
+ * assistant work locally without `vercel dev`. In production Vercel runs the same files as
+ * serverless functions.
  */
 function devContactApi(env) {
   return {
@@ -14,7 +15,8 @@ function devContactApi(env) {
     configureServer(server) {
       for (const [key, value] of Object.entries(env)) process.env[key] ??= value
 
-      server.middlewares.use('/api/contact', async (req, res) => {
+      for (const name of ['contact', 'chat']) {
+      server.middlewares.use(`/api/${name}`, async (req, res) => {
         const chunks = []
         for await (const chunk of req) chunks.push(chunk)
         try {
@@ -31,13 +33,14 @@ function devContactApi(env) {
           res.end(JSON.stringify(payload))
         }
         try {
-          const { default: handler } = await server.ssrLoadModule('/api/contact.js')
+          const { default: handler } = await server.ssrLoadModule(`/api/${name}.js`)
           await handler(req, res)
         } catch (err) {
           server.config.logger.error(String(err?.stack ?? err))
           if (!res.writableEnded) res.status(500).json({ ok: false, error: 'Server error.' })
         }
       })
+      }
     },
   }
 }

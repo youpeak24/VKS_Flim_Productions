@@ -1,5 +1,5 @@
 import { Suspense, lazy, useEffect } from 'react'
-import { Link, Route, Routes, useLocation } from 'react-router-dom'
+import { Link, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { AnimatePresence, MotionConfig } from 'motion/react'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
@@ -7,6 +7,8 @@ import FloatingSocialButtons from './components/layout/FloatingSocialButtons'
 import PageTransition from './components/layout/PageTransition'
 import ScrollToTop from './components/layout/ScrollToTop'
 import Seo from './components/common/Seo'
+import Chatbot from './components/chatbot/Chatbot'
+import { chatConfig } from './components/chatbot/chatConfig'
 import { ScrollTrigger } from './lib/gsap'
 
 const pages = {
@@ -46,6 +48,7 @@ function RouteFallback() {
 
 export default function App() {
   const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     // Warm the remaining route chunks once the first page is idle — avoids a flash on navigation.
@@ -86,6 +89,7 @@ export default function App() {
       </main>
       <Footer />
       <FloatingSocialButtons />
+      <Chatbot config={chatConfig} page={location.pathname} onNavigate={navigate} />
     </MotionConfig>
   )
 }

@@ -45,7 +45,8 @@ export default function FloatingSocialButtons() {
       transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
       className="fixed z-40 select-none"
       style={{
-        bottom: 'max(1.25rem, calc(env(safe-area-inset-bottom, 0px) + 1.25rem))',
+        // sits above the AI chat button (3.75rem tall) that owns the bottom-right corner
+        bottom: 'max(5.75rem, calc(env(safe-area-inset-bottom, 0px) + 5.75rem))',
         right: 'max(1.25rem, calc(env(safe-area-inset-right, 0px) + 1.25rem))',
       }}
     >
