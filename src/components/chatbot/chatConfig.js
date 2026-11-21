@@ -6,7 +6,7 @@ export const chatConfig = {
   apiPath: '/api/chat',
   name: 'VKS Assistant',
   subtitle: 'Online · Ask about our films & services',
-  avatar: '/favicon.svg',
+  avatar: '/logo/android-chrome-192x192.png',
   greeting:
     "Hi, I'm the **VKS Film Production** assistant 🎬\n\nAsk me about our services, our creative process, or how to start a project with producer S. Vijay Krishnan.",
   teaser: 'Got a film idea? Ask me anything 🎬',

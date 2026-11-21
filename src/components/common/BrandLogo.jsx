@@ -4,13 +4,15 @@ import { siteConfig } from '../../data/siteConfig'
  * Official logo slot.
  * Drop the client's supplied logo into src/assets/branding/ as logo.png / logo.svg / logo.webp
  * and it is used everywhere automatically, untouched (no recolouring or distortion).
- * Uses the supplied public/2 brand image when no dedicated logo asset is present.
+ * src/assets/branding/logo.webp is the official VKS logo, trimmed of its empty border and with the
+ * black background made transparent so it sits cleanly on the dark site (artwork otherwise unchanged).
+ * Falls back to the public/logo icon if that file is ever removed.
  */
 const files = import.meta.glob('../../assets/branding/logo.{svg,png,webp,avif,jpg}', {
   eager: true,
   import: 'default',
 })
-const officialLogo = Object.values(files)[0] || '/2/android-chrome-192x192.png' // 192px is plenty for a 48–96px logo (the 512px file is 6× heavier)
+const officialLogo = Object.values(files)[0] || '/logo/android-chrome-192x192.png'
 
 const heights = { sm: 'h-9', md: 'h-12', lg: 'h-20 md:h-24' }
 
@@ -20,8 +22,8 @@ export default function BrandLogo({ size = 'md', className = '' }) {
       <img
         src={officialLogo}
         alt={siteConfig.legalName}
-        width="192"
-        height="192"
+        width="271"
+        height="268"
         decoding="async"
         className={`${heights[size]} w-auto object-contain ${className}`}
       />

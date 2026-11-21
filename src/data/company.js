@@ -43,7 +43,7 @@ export const company = {
     ogImageHeight: 630,
     ogImageAlt: 'VKS Film Production — Creating Magic on Screen. A burst of colour around a camera aperture.',
     /** Square brand mark used as the Organization logo (min. 112×112 for Google). */
-    logo: '/2/android-chrome-512x512.png',
+    logo: '/logo/android-chrome-512x512.png',
     logoSize: 512,
   },
 }

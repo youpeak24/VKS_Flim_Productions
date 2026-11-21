@@ -1,13 +1,9 @@
-# Official logo slot
+# Official logo
 
-Put the client's supplied logo in this folder, named one of:
+`logo.webp` is the VKS Film Productions logo used in the header, mobile menu and footer by `BrandLogo.jsx`.
+It was cut from `public/logo/android-chrome-512x512.png` (empty border trimmed, black background made transparent).
 
-- `logo.svg` (preferred)
-- `logo.png` (transparent background)
-- `logo.webp`
-- `logo.avif`
-- `logo.jpg`
+To replace it, drop a new file here named `logo.svg` (preferred), `logo.png`, `logo.webp`, `logo.avif` or `logo.jpg`
+(keep only one) and update the `width`/`height` attributes in `BrandLogo.jsx` to match its size.
 
-`BrandLogo.jsx` picks it up automatically and uses it in the header, mobile menu and footer. The logo is shown exactly as supplied, with no recolouring, cropping or distortion.
-
-Until a file is added here, a neutral typographic "VKS / Film Production" wordmark appears as a temporary stand-in. It is not the official logo.
+Favicons, the Apple touch icon, Android icons and the web manifest live in `public/logo/`.
