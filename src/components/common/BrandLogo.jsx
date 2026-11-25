@@ -4,8 +4,8 @@ import { siteConfig } from '../../data/siteConfig'
  * Official logo slot.
  * Drop the client's supplied logo into src/assets/branding/ as logo.png / logo.svg / logo.webp
  * and it is used everywhere automatically, untouched (no recolouring or distortion).
- * src/assets/branding/logo.webp is the official VKS logo, trimmed of its empty border and with the
- * black background made transparent so it sits cleanly on the dark site (artwork otherwise unchanged).
+ * src/assets/branding/logo.webp is the official round VKS logo, with the white corners outside the
+ * circle made transparent so it sits cleanly on the dark site (artwork otherwise unchanged).
  * Falls back to the public/logo icon if that file is ever removed.
  */
 const files = import.meta.glob('../../assets/branding/logo.{svg,png,webp,avif,jpg}', {
@@ -22,8 +22,8 @@ export default function BrandLogo({ size = 'md', className = '' }) {
       <img
         src={officialLogo}
         alt={siteConfig.legalName}
-        width="271"
-        height="268"
+        width="288"
+        height="291"
         decoding="async"
         className={`${heights[size]} w-auto object-contain ${className}`}
       />
